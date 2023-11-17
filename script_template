@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+cmd_example1 () {
+    echo "Code goes here"
+}
+
+cmd_example2 () {
+    echo "More code here"
+}
+
+cmd_example3 () {
+    echo "Even more code"
+}
+
+cmd_ () {
+    echo "$0 [cmd]"; echo "Commands:"
+    declare -F | grep 'cmd_' | sed 's=declare -f cmd_==' | grep -v '^$' | sed 's=^=    ='
+}
+
+CMD=${1}; shift
+cmd_${CMD} $*
